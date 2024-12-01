@@ -1,0 +1,22 @@
+main {
+	max-width: 800px;
+	width: 90%;
+	margin: auto;
+	padding: 20px;
+}
+
+
+
+main .formulario{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	& .formulario-grupo{
+		width: 70%;
+	}
+
+	& .formulario-grupo-enviar{
+		width: 100%;
+	}
+}
