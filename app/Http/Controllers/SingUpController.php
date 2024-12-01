@@ -20,7 +20,7 @@ class SingUpController extends Controller
         $persona->materno = $request->materno;
         $persona->paterno = $request->paterno;
         $persona->usuario = $request->usuario;
-        $persona->password = $request->password;
+        $persona->password = Hash::make($request->password);
         $persona->email = $request->correo;
 
 

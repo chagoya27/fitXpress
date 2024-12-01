@@ -6,7 +6,9 @@ use App\Http\Controllers\SingUpController;
 
 
 
-Route::get('/login',[SingInController::class,'index']);
+Route::get('/',[SingInController::class,'index']);
+Route::get('/private',[SingInController::class,'page'])->name('private');
+Route::post('/inicia-sesion', [SingInController::class, 'login'])->name('inicia-sesion');
 
 
 

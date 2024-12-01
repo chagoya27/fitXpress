@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('paterno', 40);
             $table->string('materno', 40)->nullable();
             $table->string('usuario', 15);
-            $table->string('password', 50);
+            $table->string('password', 100);
             $table->string('email', 50)->unique();
             $table->rememberToken();
             $table->timestamps();

@@ -18,7 +18,8 @@
     <x-header>Inicia Sesión</x-header>
 
 	<main>
-        <form action="" class="formulario" id="formulario">
+        <form method="POST" action="{{route('inicia-sesion')}}"  class="formulario" id="formulario" >
+            @csrf
             <!--Grupo  usuario-->
             <div class="formulario-grupo " id="formulario-usuario">
                 <label for="usuario" class="formulario-label">Usuario</label>

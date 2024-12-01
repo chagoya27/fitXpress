@@ -1,24 +1,31 @@
 <?php
 
 namespace App\Models;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
-class Formulario extends Model
+class Formulario extends Authenticatable
 {
-    protected $table= 'persona'; #para decir  que tabla va a administrar
-    
-    protected function title():Attribute{ #para transformar el contenido de titulos a solo minusculas
-        return Attribute::make(
-            set: function($value){ #set para guardar valores en la base
-                return strtolower($value);
-            },
+    protected $table = 'persona'; // Administra la tabla 'persona'
 
-            get:function($value){#recuperar valores en la base
-                return ucfirst($value);
-            }
+    // Aquí transformamos los títulos a minúsculas
+    protected function title(): Attribute
+    {
+        return Attribute::make(
+            set: fn($value) => strtolower($value),
+            get: fn($value) => ucfirst($value)
         );
     }
 
+    // Asegúrate de que el campo 'password' esté accesible
+    protected $fillable = ['usuario', 'password'];
+
+    // Método para verificar la contraseña
+    public function checkPassword($password)
+    {
+        return Hash::check($password, $this->password);
+    }
 }
