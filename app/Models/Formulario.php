@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SingUp extends Model
+class Formulario extends Model
 {
     protected $table= 'persona'; #para decir  que tabla va a administrar
     

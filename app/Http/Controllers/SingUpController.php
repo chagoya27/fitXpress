@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Persona;
-use App\Models\SingUp;
+use App\Models\Formulario;
 use Illuminate\Support\Facades\Hash;
 
 class SingUpController extends Controller
@@ -15,7 +15,7 @@ class SingUpController extends Controller
 
     public function store(Request $request)
     {
-        $persona = new SingUp();
+        $persona = new Formulario();
         $persona->nombre = $request->nombre;
         $persona->materno = $request->materno;
         $persona->paterno = $request->paterno;
