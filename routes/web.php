@@ -5,9 +5,8 @@ use App\Http\Controllers\SingInController;
 use App\Http\Controllers\SingUpController;
 
 
-Route::get('/', [SingInController::class, 'index'])->name('home');
-Route::post('/custom-login', [SingInController::class, 'index'])->name('custom-login');
-Route::get('/logados', [SingInController::class, 'pageIn'])->name('logados');
+
+Route::get('/login',[SingInController::class,'index']);
 
 
 
