@@ -23,7 +23,7 @@
             <div class="formulario-grupo " id="formulario-usuario">
                 <label for="usuario" class="formulario-label">Usuario</label>
                 <div class="formulario-grupo-input">
-                    <input type="text" class="formulario-input" name ="usuario" id="usuario" placeholder="John123">
+                    <input type="text" class="formulario-input" name ="usuario" id="usuario" placeholder="Piñita08">
                     <i class="fa-solid fa-circle-xmark formulario-validacion-estado"></i>
                 </div>
                 <p class="formulario-input-error">El usuario tiene que ser de 4 a 16 digitos y no puede contener espacios en blanco </p>
