@@ -18,8 +18,27 @@ class SingInController extends Controller
 	    return view('login');
 	}
 
-
-
+    public function page(){
+        return view('private');
+    }
     
-        
+
+    public function login(Request $request)
+    {
+    // Validación
+    $credentials = $request->only('usuario', 'password');
+
+    // Verificar las credenciales manualmente con el modelo Formulario
+    $user = Formulario::where('usuario', $credentials['usuario'])->first();
+
+    if ($user && Hash::check($credentials['password'], $user->password)) {
+        Auth::login($user, $request->has('remember'));
+        $request->session()->regenerate();
+
+        return redirect()->intended('/private');
+    } else {
+        return redirect('/')->withErrors(['usuario' => 'Credenciales incorrectas']);
+        }
+    }
+
 }
