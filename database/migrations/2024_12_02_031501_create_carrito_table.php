@@ -11,18 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Tabla producto
-        Schema::create('producto', function (Blueprint $table) {
-            $table->id('producto_id')->primary()->unique();
-            $table->string('nombre', 50);
-            $table->string('dimensiones', 50);
-            $table->string('descripcion', 100);
-            $table->string('tipo_prod', 50);
-            $table->float('precio');
+        Schema::create('carrito', function (Blueprint $table) {
+            $table->id('carrito_id')->primary()->unique();
             $table->double('cantidad');
             $table->unsignedBigInteger('persona_id');
             $table->foreign('persona_id')->references('persona_id')
-            ->on('administrador')->onDelete('cascade');
+            ->on('cliente')->onDelete('cascade');
+            $table->unsignedBigInteger('producto_id');
+            $table->foreign('producto_id')->references('producto_id')
+            ->on('producto')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('producto');
+        Schema::dropIfExists('carrito');
     }
 };

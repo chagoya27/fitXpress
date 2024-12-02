@@ -25,19 +25,27 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            AdministradorSeeder::class, // Registro del seeder de Persona
+            AdministradorSeeder::class, // Registro del seeder de Administrador
         ]);
 
         $this->call([
-            ClienteSeeder::class, // Registro del seeder de Persona
+            ClienteSeeder::class, // Registro del seeder de Clienete
         ]);
 
         $this->call([
-            ProductoSeeder::class, // Registro del seeder de Persona
+            ProductoSeeder::class, // Registro del seeder de Producto
         ]);
 
         $this->call([
-            CompraSeeder::class, // Registro del seeder de Persona
+            OrdenSeeder::class, // Registro del seeder de Orden
+        ]);
+
+        $this->call([
+            CarritoSeeder::class, // Registro del seeder de Carrito
+        ]);
+
+        $this->call([
+            CompraSeeder::class, // Registro del seeder de Compra
         ]);
 
     }
