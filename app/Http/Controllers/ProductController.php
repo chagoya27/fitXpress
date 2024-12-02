@@ -1,61 +1,28 @@
 <?php
-
+  
 namespace App\Http\Controllers;
-
-use App\Models\Formulario;
-use App\Models\persona;
-use App\Models\Producto;
+  
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use App\Models\Product;
-
-class SingInController extends Controller
+  
+class ProductController extends Controller
 {
     /**
-	* Función que muestra la vista de logados o la vista con el formulario de Login
-	*/
-	public function index()
-	{
-	    return view('login');
-	}
-
-    public function page(){
-        $products = Producto::all();
-        return view('products',compact('products'));
-    }
-
-
-
-
-    
-
-
-
-
-    public function login(Request $request)
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function index()
     {
-    // Validación
-    $credentials = $request->only('usuario', 'password');
-
-    // Verificar las credenciales manualmente con el modelo Formulario
-    $user = Formulario::where('usuario', $credentials['usuario'])->first();
-
-    if ($user && Hash::check($credentials['password'], $user->password)) {
-        Auth::login($user, $request->has('remember'));
-        $request->session()->regenerate();
-
-        return redirect()->intended('/private');
-    } else {
-        return redirect('/')->withErrors(['usuario' => 'Credenciales incorrectas']);
-        }
+        $products = Product::all();
+        return view('products', compact('products'));
     }
-
-
-
-
-
-
+  
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
     public function cart()
     {
         return view('cart');
@@ -79,6 +46,7 @@ class SingInController extends Controller
                 "name" => $product->name,
                 "quantity" => 1,
                 "price" => $product->price,
+                "image" => $product->image
             ];
         }
           
@@ -117,5 +85,4 @@ class SingInController extends Controller
             session()->flash('success', 'Product removed successfully');
         }
     }
-
 }
