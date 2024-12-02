@@ -22,8 +22,7 @@ class SingUpController extends Controller
         $persona->usuario = $request->usuario;
         $persona->password = Hash::make($request->password);
         $persona->email = $request->correo;
-
-
+        $persona->telefono = $request->telefono;
         $persona->save();
 
     }

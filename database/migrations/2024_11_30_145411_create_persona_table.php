@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('usuario', 15);
             $table->string('password', 100);
             $table->string('email', 50)->unique();
+            $table->string('telefono', 10);
             $table->rememberToken();
             $table->timestamps();
         });

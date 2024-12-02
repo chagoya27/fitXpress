@@ -16,10 +16,12 @@ return new class extends Migration
             $table->id('compra_id')->primary()->unique();
             $table->integer('cantidad');
             $table->date('fecha');
-            $table->decimal('total', 10)->nullable();
             $table->unsignedBigInteger('persona_id');
             $table->foreign('persona_id')->references('persona_id')
-            ->on('administrador')->onDelete('cascade');
+            ->on('cliente')->onDelete('cascade');
+            $table->unsignedBigInteger('producto_id');
+            $table->foreign('producto_id')->references('producto_id')
+            ->on('producto')->onDelete('cascade');
             $table->timestamps();
         });
     }
