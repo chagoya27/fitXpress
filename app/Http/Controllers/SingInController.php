@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Formulario;
 use App\Models\persona;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +20,8 @@ class SingInController extends Controller
 	}
 
     public function page(){
-        return view('private');
+        $producto = Producto::all();
+        return view('private',compact('producto'));
     }
     
 
