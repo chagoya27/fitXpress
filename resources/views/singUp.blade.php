@@ -124,7 +124,7 @@
         </form>
 	</main>
 
-
+    <script src="{{ asset('js/formulario.js') }}"></script>
 	<script src="https://kit.fontawesome.com/8ceb30feb6.js" crossorigin="anonymous"></script>
 </body>
 </html>
