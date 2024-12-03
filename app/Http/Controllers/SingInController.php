@@ -28,12 +28,6 @@ class SingInController extends Controller
         $products = Producto::all();
         return view('products',compact('products'));
     }
-
-
-
-
-
-
     
     public function login(Request $request)
     {
@@ -72,14 +66,6 @@ class SingInController extends Controller
         }
     }
     
-
-
-
-
-
-
-
-
 
     public function cart()
     {

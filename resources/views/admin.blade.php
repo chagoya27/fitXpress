@@ -13,54 +13,30 @@
     <x-header>Registrar Producto</x-header>
 
 	<main>
-        <form action="{{ url('/productos') }}" method="POST" class="formulario" id="formulario">
+        <form action="{{ url('/admin') }}" method="POST" class="formulario" id="formulario">
             @csrf <!-- Token CSRF para la seguridad -->
 
             <!-- Grupo nombre -->
             <div class="formulario-grupo" id="formulario-nombre">
-                <label for="nombre" class="formulario-label">Nombre del Producto</label>
+                <label for="name" class="formulario-label">Nombre del Producto</label>
                 <div class="formulario-grupo-input">
-                    <input type="text" class="formulario-input" name="nombre" id="nombre" placeholder="Nombre del producto" required>
-                </div>
-            </div>
-
-            <!-- Grupo dimensiones -->
-            <div class="formulario-grupo" id="formulario-dimensiones">
-                <label for="dimensiones" class="formulario-label">Dimensiones</label>
-                <div class="formulario-grupo-input">
-                    <input type="text" class="formulario-input" name="dimensiones" id="dimensiones" placeholder="Ejemplo: 10x20x5 cm" required>
+                    <input type="text" class="formulario-input" name="name" id="name" placeholder="Nombre del producto" required>
                 </div>
             </div>
 
             <!-- Grupo descripción -->
             <div class="formulario-grupo" id="formulario-descripcion">
-                <label for="descripcion" class="formulario-label">Descripción</label>
+                <label for="description" class="formulario-label">Descripción</label>
                 <div class="formulario-grupo-input">
-                    <input type="text" class="formulario-input" name="descripcion" id="descripcion" placeholder="Breve descripción del producto" required>
-                </div>
-            </div>
-
-            <!-- Grupo tipo de producto -->
-            <div class="formulario-grupo" id="formulario-tipo_prod">
-                <label for="tipo_prod" class="formulario-label">Tipo de Producto</label>
-                <div class="formulario-grupo-input">
-                    <input type="text" class="formulario-input" name="tipo_prod" id="tipo_prod" placeholder="Ejemplo: consumible, pesas o accesorio" required>
+                    <input type="text" class="formulario-input" name="description" id="description" placeholder="Breve descripción del producto" required>
                 </div>
             </div>
 
             <!-- Grupo precio -->
             <div class="formulario-grupo" id="formulario-precio">
-                <label for="precio" class="formulario-label">Precio</label>
+                <label for="price" class="formulario-label">Precio</label>
                 <div class="formulario-grupo-input">
-                    <input type="number" step="0.01" class="formulario-input" name="precio" id="precio" placeholder="Ejemplo: 299.99" required>
-                </div>
-            </div>
-
-            <!-- Grupo cantidad -->
-            <div class="formulario-grupo" id="formulario-cantidad">
-                <label for="cantidad" class="formulario-label">Cantidad</label>
-                <div class="formulario-grupo-input">
-                    <input type="number" step="1" class="formulario-input" name="cantidad" id="cantidad" placeholder="Ejemplo: 50" required>
+                    <input type="number" step="0.01" class="formulario-input" name="price" id="price" placeholder="Ejemplo: 299.99" required>
                 </div>
             </div>
 

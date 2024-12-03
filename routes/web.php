@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SingInController;
 use App\Http\Controllers\SingUpController;
@@ -10,7 +11,7 @@ Route::get('/',[SingInController::class,'index']);
 
 Route::post('/inicia-sesion', [SingInController::class, 'login'])->name('inicia-sesion');
 
-Route::get('admin', [ProductController::class, 'admin'])->name('admin');
+Route::get('/admin', [ProductController::class, 'admin'])->name('admin');
 
 Route::get('/private',[ProductController::class,'index'])->name('private');
 Route::get('cart', [ProductController::class, 'cart'])->name('cart');
@@ -24,4 +25,8 @@ Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('r
 
 Route::get('/SingUp/create',[SingUpController::class,'index']);
 Route::post('/SingUp', [SingUpController::class,'store']);
+
+
+Route::post('/admin', [AdminController::class, 'store']);
+
 
