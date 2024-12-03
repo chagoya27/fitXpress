@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: API de Twitter
+  version: 4.14.0
+  description: >
+    Esta API se encarga de automatizar algunas de las acciones disponibles en Twitter,
+    como dar likes, publicar tweets, y responder a tweets.
+
+paths:
+  /like-tweet (client.like(ID_tweet)):
+    post:
+      summary: Da like a un tweet.
+      description: Permite dar "me gusta" a un tweet especificado por su ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tweet_id:
+                  type: string
+                  description: ID del tweet al que se le dará "me gusta".
+                  example: "1863428222605550016"
+      responses:
+        "200":
+          description: Operación exitosa. Se dio "me gusta" al tweet.
+        "400":
+          description: Solicitud incorrecta.
+
+  /retweet (client.retweet(ID_TWEET,TEXT)):
+    post:
+      summary: Retweetea un tweet.
+      description: Realiza un retweet de un tweet especificado por su ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tweet_id:
+                  type: string
+                  description: ID del tweet a retweetear.
+                  example: "1863428222605550016"
+      responses:
+        "200":
+          description: Retweet realizado exitosamente.
+        "400":
+          description: Solicitud incorrecta.
+
+  /reply-tweet client.create_tweet(in_reply_to_tweet_id=ID_tweet,text):
+    post:
+      summary: Responde a un tweet.
+      description: Publica una respuesta a un tweet especificado por su ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tweet_id:
+                  type: string
+                  description: ID del tweet al que se responderá.
+                  example: "1863428222605550016"
+                text:
+                  type: string
+                  description: Contenido del texto de la respuesta.
+                  example: "Esta es una respuesta al tweet."
+      responses:
+        "200":
+          description: Respuesta publicada exitosamente.
+        "400":
+          description: Solicitud incorrecta.
+
+  /publish-tweet (client.create_tweet(text)) :
+    post:
+      summary: Publica un tweet con texto e imagenes si hace falta.
+      description: Publica un tweet con texto e imágenes adjuntas.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Texto del tweet.
+                  example: "Este es el primer tweet"
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: Lista de imágenes a adjuntar al tweet.
+      responses:
+        "200":
+          description: Tweet publicado exitosamente.
+        "400":
+          description: Solicitud incorrecta.
