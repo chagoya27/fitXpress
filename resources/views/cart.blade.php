@@ -19,7 +19,7 @@
                 <tr data-id="{{ $id }}">
                     <td data-th="Product">
                         <div class="row">
-                            <div class="col-sm-3 hidden-xs"><img src="" width="100" height="150" class="img-responsive"/></div>
+                            <div class="col-sm-3 hidden-xs"><img src="{{ asset('images/'.$id.'.PNG') }}" width="100" height="150" class="img-responsive"/></div>
                             <div class="col-sm-9">
                                 <h4 class="nomargin">{{ $details['name'] }}</h4>
                             </div>
@@ -43,7 +43,7 @@
         </tr>
         <tr>
             <td colspan="5" class="text-right">
-                <a href="{{ url('/private') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
                 <button class="btn btn-success">Checkout</button>
             </td>
         </tr>

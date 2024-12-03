@@ -17,30 +17,18 @@ class ProductSeeder extends Seeder
         $products = [
             [
                 'name' => 'Barra de Proteina',
-                'description' => 'Barra rica en proteínas para nutrición deportiva',
+                'description' => 'Barra rica en proteínas para nutrición deportiva/50gr',
                 'price' => 50.00
             ],
             [
                 'name' => 'Barra Olímpica',
-                'description' => 'Barra olímpica ideal para levantamiento de pesas y ejercicios de fuerza',
-                'price' => 3500.00
-            ],
-
-
-            [
-                'name' => 'Barra de Proteina',
-                'description' => 'Barra rica en proteínas para nutrición deportiva',
-                'price' => 50.00
-            ],
-            [
-                'name' => 'Barra Olímpica',
-                'description' => 'Barra olímpica ideal para levantamiento de pesas y ejercicios de fuerza',
+                'description' => 'Barra olímpica ideal para levantamiento de pesas y ejercicios de fuerza/220cm x 3cm',
                 'price' => 3500.00
             ],
 
             [
                 'name' => 'Barra',
-                'description' => 'Barra estándar para entrenamiento en gimnasio',
+                'description' => 'Barra estándar para entrenamiento en gimnasio/150cm x 3cm',
                 'price' => 2000.00
             ],
 
@@ -63,9 +51,16 @@ class ProductSeeder extends Seeder
             ],
 
             [
-                'name' => 'Calcetas para Hombre',
-                'description' => 'Calcetas deportivas de alto rendimiento para hombre',
-                'price' => 120.00
+                'name' => 'Colágeno Hidrolizado',
+                'description' => 'Suplemento alimenticio para cuidado de articulaciones y piel/500g',
+                'price' => 550.00
+            ],
+
+
+            [
+                'name' => 'Creatina',
+                'description' => 'Suplemento de creatina monohidratada para aumentar fuerza y rendimiento/300g',
+                'price' => 450.00
             ],
             
         ];
