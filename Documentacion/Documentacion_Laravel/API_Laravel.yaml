@@ -1,0 +1,199 @@
+openapi: 3.0.3
+info:
+  title: API FitxPress
+  version: 1.0.0
+  description: API para gestionar las operaciones de un sistema de e-commerce, como la gestión del carrito de compras, la creación de cuentas y más.
+
+paths:
+  /cart:
+    get:
+      summary: Muestra el carrito de compras.
+      description: Este metodo se encarga de mostrar el carrito de compras con los productos que se han agregado.
+      responses:
+        "200":
+          description: Carrito de compras con productos agregados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cart:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: ID del producto.
+                          example: 12
+                        name:
+                          type: string
+                          description: Nombre del producto.
+                          example: "Barra olimpica"
+                        description:
+                          type: string
+                          description: Barra olimpica ideal para levantamiento de pesas y ejercicios de fuerza
+                          example: "Barra olimpica"
+                        price:
+                          type: number
+                          format: decimal
+                          description: Precio del producto.
+                          example: 3500
+                        quantity:
+                          type: integer
+                          description: Cantidad de este producto en el carrito.
+                          example: 2
+        "404":
+          description: Carrito vacío o no encontrado.
+
+  /add-to-cart/{id}:
+    get:
+      summary: Agrega un producto al carrito.
+      description: Permite agregar un producto al carrito de compras utilizando su ID. El ID es autoincrementable y gestionado por el sistema.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID del producto a agregar al carrito (autoincrementable, gestionado por el sistema).
+      responses:
+        "200":
+          description: Producto agregado al carrito exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID del producto agregado.
+                    example: 12
+                  name:
+                    type: string
+                    description: Nombre del producto.
+                    example: "Barra olimpica"
+                  price:
+                    type: number
+                    format: decimal
+                    description: Precio del producto.
+                    example: 3500
+                  quantity:
+                    type: integer
+                    description: Cantidad agregada al carrito.
+                    example: 1
+        "404":
+          description: Producto no encontrado.
+
+  /remove-from-cart:
+    delete:
+      summary: Remueve un producto del carrito.
+      description: Elimina un producto del carrito de compras.
+      parameters:
+        - in: query
+          name: product_id
+          required: true
+          schema:
+            type: integer
+          description: ID del producto a eliminar del carrito.
+          example: 12
+      responses:
+        "200":
+          description: Producto eliminado del carrito exitosamente.
+        "404":
+          description: Producto no encontrado en el carrito.
+
+  /update-cart:
+    patch:
+      summary: Actualiza la cantidad de productos en el carrito.
+      description: Permite actualizar la cantidad de un producto en el carrito de compras.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+                  description: ID del producto a actualizar.
+                  example: 12
+                quantity:
+                  type: integer
+                  description: Nueva cantidad del producto en el carrito.
+                  example: 2
+      responses:
+        "200":
+          description: Cantidad de producto actualizada exitosamente en el carrito.
+        "404":
+          description: Producto no encontrado en el carrito.
+
+  /SingUp/create:
+    get:
+      summary: Muestra el formulario de creación de cuenta.
+      description: Devuelve el formulario de registro para crear una cuenta de usuario en el sistema.
+      responses:
+        "200":
+          description: Formulario de creación de cuenta mostrado exitosamente.
+        "404":
+          description: Página no encontrada.
+  /SingUp:
+    post:
+      summary: Registra una nueva cuenta de usuario.
+      description: Este endpoint recibe los datos del formulario de registro y los inserta en la tabla `personas` de la base de datos.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Nombre completo del usuario.
+                  example: "Juan Pérez"
+                apellido materno:
+                  type: string
+                  format: email
+                  description: Correo electrónico del usuario. Debe ser único.
+                  example: "juan.perez@email.com"
+                apellido paterno:
+                  type: string
+                  description: Contraseña del usuario. Se debe almacenar de manera segura (hash).
+                  example: "password123"
+                password:
+                  type: string
+                  description: Contraseña del usuario.
+                  example: "password123"
+                phone:
+                  type: string
+                  description: Número de teléfono del usuario.
+                  example: "5515994000"
+      responses:
+        "201":
+          description: Cuenta creada exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Mensaje de éxito.
+                    example: "Cuenta creada exitosamente."
+        "400":
+          description: Error en los datos del formulario (por ejemplo, datos faltantes o incorrectos).
+        "409":
+          description: Ya existe una cuenta con ese correo electrónico.
+        "500":
+          description: Error en el servidor al procesar la solicitud.
+  /Admin:
+    get:
+      summary: Muestra la pantalla de inicio de sesión.
+      description: Muestra la pantalla para la administración de los productos.
+      responses:
+        "200":
+          description: Pantalla de inicio de sesión mostrada exitosamente.
+        "404":
+          description: Página no encontrada.
+
