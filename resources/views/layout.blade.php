@@ -9,6 +9,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   
     <style type="text/css">
+
+        .col-lg-10{
+            background: #a6ec34;
+        }
+
+        .col-md-2{
+            background: #a6ec34;
+        }
+
+
         .dropdown{
             float:right;
             padding-right: 30px;

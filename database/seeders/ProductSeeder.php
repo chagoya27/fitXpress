@@ -44,6 +44,15 @@ class ProductSeeder extends Seeder
                 'price' => 350.00
             ],
 
+
+
+            [
+                'name' => 'Calcetas para Hombre',
+                'description' => 'Calcetas deportivas de alto rendimiento para hombre',
+                'price' => 120.00
+            ],
+
+
             [
                 'name' => 'Calcetas para Mujer',
                 'description' => 'Calcetas deportivas de alto rendimiento para mujer',
