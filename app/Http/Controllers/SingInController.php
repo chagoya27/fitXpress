@@ -45,14 +45,7 @@ class SingInController extends Controller
             $esAdmin = Administrador::where('persona_id', $personaId)->exists();
             Log::info('Resultado de administrador:', ['persona_id' => $personaId, 'esAdmin' => $esAdmin]);
     
-            // Verificar si es cliente usando Eloquent
-            $esCliente = Cliente::where('persona_id', $personaId)->exists();
-            Log::info('Resultado de cliente:', ['persona_id' => $personaId, 'esCliente' => $esCliente]);
-    
-            // Iniciar sesión y regenerar la sesión
-            Auth::login($user, $request->has('remember'));
             $request->session()->regenerate();
-            print($esCliente);
             // Redirigir dependiendo de si es administrador o no
             if ($esAdmin) {
                 return redirect()->intended('/admin');

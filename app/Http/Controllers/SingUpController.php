@@ -24,7 +24,7 @@ class SingUpController extends Controller
         $persona->email = $request->correo;
         $persona->telefono = $request->telefono;
         $persona->save();
-
+        return view('login');
     }
     
 
