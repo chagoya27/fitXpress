@@ -17,6 +17,11 @@ class ProductController extends Controller
         $products = Product::all();
         return view('products', compact('products'));
     }
+
+    public function admin()
+    {
+        return view('Admin');
+    }
   
     /**
      * Write code on Method

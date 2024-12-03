@@ -48,5 +48,9 @@ class DatabaseSeeder extends Seeder
             CompraSeeder::class, // Registro del seeder de Compra
         ]);
 
+        $this->call([
+            ProductSeeder::class, // Registro del seeder de Compra
+        ]);
+
     }
 }

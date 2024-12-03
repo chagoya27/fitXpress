@@ -14,6 +14,12 @@ class Cliente extends Model
 
     protected $table = 'cliente';
 
+    protected $fillable = ['persona_id'];
+    protected $primaryKey = 'persona_id';
+    public $incrementing = false;
+    protected $keyType = 'unsignedBigInteger';
+
+
     function obtenerClientes(){
     // Obtiene todos los registros de la tabla 'cliente'
         $clientes = Cliente::all(); // Obtiene todos los datos de la tabla 'cliente'

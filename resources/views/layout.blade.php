@@ -38,7 +38,7 @@
 <div class="container">
     <div class="row navbar-light bg-light pt-2 pb-2">
         <div class="col-lg-10">
-            <h3 class="mt-2">Laravel Add to Cart Example - ItSolutionStuff.com</h3>
+            <h3 class="mt-2">fitXpress</h3>
         </div>
         <div class="col-md-2 text-right main-section">
             <div class="dropdown">

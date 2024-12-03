@@ -10,7 +10,7 @@ Route::get('/',[SingInController::class,'index']);
 
 Route::post('/inicia-sesion', [SingInController::class, 'login'])->name('inicia-sesion');
 
-
+Route::get('admin', [ProductController::class, 'admin'])->name('admin');
 
 Route::get('/private',[ProductController::class,'index'])->name('private');
 Route::get('cart', [ProductController::class, 'cart'])->name('cart');

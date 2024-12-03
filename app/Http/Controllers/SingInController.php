@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Formulario;
-use App\Models\persona;
+use App\Models\Cliente;
+use App\Models\Persona;
+use App\Models\Administrador;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Product;
+use Illuminate\Support\Facades\Log;
+
 
 class SingInController extends Controller
 {
@@ -28,28 +32,49 @@ class SingInController extends Controller
 
 
 
+
+
+    
+    public function login(Request $request)
+    {
+        // Validación de credenciales del formulario
+        $credentials = $request->only('usuario', 'password');
+    
+        // Verificar si el usuario existe en la tabla Formulario
+        $user = Formulario::where('usuario', $credentials['usuario'])->first();
+    
+        if ($user && Hash::check($credentials['password'], $user->password)) {
+            // Recuperar el ID de persona relacionado con el usuario
+            $personaId = $user->persona_id;
+    
+            // Verificar si es administrador usando Eloquent
+            $esAdmin = Administrador::where('persona_id', $personaId)->exists();
+            Log::info('Resultado de administrador:', ['persona_id' => $personaId, 'esAdmin' => $esAdmin]);
+    
+            // Verificar si es cliente usando Eloquent
+            $esCliente = Cliente::where('persona_id', $personaId)->exists();
+            Log::info('Resultado de cliente:', ['persona_id' => $personaId, 'esCliente' => $esCliente]);
+    
+            // Iniciar sesión y regenerar la sesión
+            Auth::login($user, $request->has('remember'));
+            $request->session()->regenerate();
+            print($esCliente);
+            // Redirigir dependiendo de si es administrador o no
+            if ($esAdmin) {
+                return redirect()->intended('/admin');
+            } else {
+                return redirect()->intended('/private');
+            }
+        } else {
+            // Credenciales incorrectas
+            return redirect('/')
+                ->withErrors(['usuario' => 'Credenciales incorrectas']);
+        }
+    }
     
 
 
 
-
-    public function login(Request $request)
-    {
-    // Validación
-    $credentials = $request->only('usuario', 'password');
-
-    // Verificar las credenciales manualmente con el modelo Formulario
-    $user = Formulario::where('usuario', $credentials['usuario'])->first();
-
-    if ($user && Hash::check($credentials['password'], $user->password)) {
-        Auth::login($user, $request->has('remember'));
-        $request->session()->regenerate();
-
-        return redirect()->intended('/private');
-    } else {
-        return redirect('/')->withErrors(['usuario' => 'Credenciales incorrectas']);
-        }
-    }
 
 
 

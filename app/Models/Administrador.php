@@ -14,7 +14,10 @@ class Administrador extends Model
 
     protected $table = 'administrador';
 
-    
+    protected $primaryKey = 'persona_id';
+    public $incrementing = false; // Si no es autoincremental
+    protected $keyType = 'unsignedBigInteger';
+    protected $fillable = ['persona_id', 'sucursal', 'rfc'];
 
 
 

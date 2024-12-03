@@ -88,8 +88,8 @@ class PersonaSeeder extends Seeder
         $persona7->nombre = 'Sofía';
         $persona7->paterno = 'Rojas';
         $persona7->materno = 'Morales';
-        $persona7->usuario = 'sofiarm';
-        $persona7->password = bcrypt('sofiapass');
+        $persona7->usuario = 'juan';
+        $persona7->password = bcrypt('juan');
         $persona7->email = 'sofia@rojas.com';
         $persona7->telefono = 1247956784;
         $persona7->remember_token = Str::random(10);
